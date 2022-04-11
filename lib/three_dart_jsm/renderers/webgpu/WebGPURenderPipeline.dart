@@ -129,17 +129,16 @@ class WebGPURenderPipeline {
         ._device
         .createBindGroupLayout(GPUBindGroupLayoutDescriptor(entries: [
           GPUBindGroupLayoutEntry(
-            binding: 0,
-            visibility: GPUShaderStage.Vertex,
-            buffer: GPUBufferBindingLayout(
-              type: GPUBufferBindingType.Uniform
-            )
-          ),
+              binding: 0,
+              visibility: GPUShaderStage.Vertex,
+              buffer:
+                  GPUBufferBindingLayout(type: GPUBufferBindingType.Uniform)),
           GPUBindGroupLayoutEntry(
               binding: 1,
               visibility: GPUShaderStage.Fragment,
-              buffer: GPUBufferBindingLayout(type: GPUBufferBindingType.Uniform))
-        ]));
+              buffer:
+                  GPUBufferBindingLayout(type: GPUBufferBindingType.Uniform))
+        ], entryCount: 2));
 
     var pipelineLayout = this._device.createPipelineLayout(
         GPUPipelineLayoutDescriptor(
@@ -151,8 +150,7 @@ class WebGPURenderPipeline {
         fragment: _fragmentState,
         primitive: primitiveState,
         depthStencil: _depthStencilState,
-        multisample: GPUMultisampleState(count: this._sampleCount)
-      );
+        multisample: GPUMultisampleState(count: this._sampleCount));
 
     this.pipeline =
         this._device.createRenderPipeline(_renderPipelineDescriptor);

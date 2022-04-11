@@ -114,7 +114,7 @@ packages:
   flutter_gl:
     dependency: "direct main"
     description:
-      path: "../../flutter_gl/flutter_gl"
+      path: "../flutter_gl/flutter_gl"
       relative: true
     source: path
     version: "0.0.13"
@@ -159,7 +159,7 @@ packages:
   flutter_webgpu:
     dependency: "direct main"
     description:
-      path: "../../flutter_webgpu"
+      path: "../flutter_webgpu"
       relative: true
     source: path
     version: "0.0.1"
@@ -318,7 +318,7 @@ packages:
   three_dart:
     dependency: "direct main"
     description:
-      path: "../../three_dart"
+      path: "../three_dart"
       relative: true
     source: path
     version: "0.0.9"

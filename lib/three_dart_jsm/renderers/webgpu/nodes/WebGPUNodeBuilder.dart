@@ -159,8 +159,9 @@ class WebGPUNodeBuilder extends NodeBuilder {
 
         var metalnessNode = null;
 
-        if (material.metalnessNode != null && material.metalnessNode.isNode) {
-          metalnessNode = material.metalnessNode;
+        if ((material as dynamic).metalnessNode != null &&
+            (material as dynamic).metalnessNode.isNode) {
+          metalnessNode = (material as dynamic).metalnessNode;
         } else {
           metalnessNode = new MaterialNode(MaterialNode.METALNESS);
         }
@@ -177,8 +178,9 @@ class WebGPUNodeBuilder extends NodeBuilder {
 
         var roughnessNode = null;
 
-        if (material.roughnessNode && material.roughnessNode.isNode) {
-          roughnessNode = material.roughnessNode;
+        if ((material as dynamic).roughnessNode &&
+            (material as dynamic).roughnessNode.isNode) {
+          roughnessNode = (material as dynamic).roughnessNode;
         } else {
           roughnessNode = new MaterialNode(MaterialNode.ROUGHNESS);
         }
@@ -202,8 +204,9 @@ class WebGPUNodeBuilder extends NodeBuilder {
 
         var normalNode = null;
 
-        if (material.normalNode && material.normalNode.isNode) {
-          normalNode = material.normalNode;
+        if ((material as dynamic).normalNode &&
+            (material as dynamic).normalNode.isNode) {
+          normalNode = (material as dynamic).normalNode;
         } else {
           normalNode = new NormalNode(NormalNode.VIEW);
         }
@@ -225,20 +228,18 @@ class WebGPUNodeBuilder extends NodeBuilder {
 
       // OUTGOING LIGHT
 
-			var outgoingLightNode = nodeObject( outputNode ).xyz;
-
+      var outgoingLightNode = nodeObject(outputNode).xyz;
 
       /// EMISSIVE
 
-			var emissiveNode = material.emissiveNode;
+      var emissiveNode = material.emissiveNode;
 
-			if ( emissiveNode != null && emissiveNode.isNode ) {
+      if (emissiveNode != null && emissiveNode.isNode) {
+        outgoingLightNode = add(emissiveNode, outgoingLightNode);
+      }
 
-				outgoingLightNode = add( emissiveNode, outgoingLightNode );
-
-			}
-
-			outputNode = join( [outgoingLightNode.xyz, nodeObject( diffuseColorNode ).w] );
+      outputNode =
+          join([outgoingLightNode.xyz, nodeObject(diffuseColorNode).w]);
 
       var outputEncoding = this.renderer.outputEncoding;
 
@@ -522,7 +523,7 @@ class WebGPUNodeBuilder extends NodeBuilder {
 
   buildCode() {
     var shadersData = {"fragment": {}, "vertex": {}};
-    
+
     for (var shaderStage in shadersData.keys) {
       var flow = '// code\n';
       flow += "\t${this.flowCode[shaderStage]}";

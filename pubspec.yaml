@@ -17,13 +17,13 @@ dependencies:
   universal_html: ^2.0.8
   image: ^3.1.1
   flutter_webgpu:
-    path: ../../flutter_webgpu
+    path: ../flutter_webgpu
 
 dependency_overrides:
   flutter_gl:
-    path: ../../flutter_gl/flutter_gl
+    path: ../flutter_gl/flutter_gl
   three_dart:
-    path: ../../three_dart
+    path: ../three_dart
 
 
 
